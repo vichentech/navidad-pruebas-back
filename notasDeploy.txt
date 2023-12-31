@@ -1,0 +1,6 @@
+Pasos para hacer un deploy en render.com
+
+Conecfar la aplicacion con github
+
+· Generar el 
+>git init
