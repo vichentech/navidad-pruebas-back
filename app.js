@@ -27,11 +27,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-
 // Ruta para mostrar el formulario
- app.get('/', (req, res) => {
-     res.sendFile(__dirname + '/vistas/index.html');
- });
+//  app.get('/', (req, res) => {
+//      res.sendFile(__dirname + '/vistas/index.html');
+//  });
 
 // Ruta para descargar los archivos de sonido
 app.get('/sonidos/:archivo?', (req, res) => {
@@ -50,30 +49,20 @@ app.get('/sonidos/:archivo?', (req, res) => {
     } else {
 
         // Se supone que el archvio existe...
-
         const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta correcta
         console.log("Enviando Archivo", archivoPath);
-
         res.setHeader('Content-Disposition', 'attachment; filename=' + nombreArchivo);
         //res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Type', 'audio/mpeg');
-
-        //res.download(archivoPath, nombreArchivo); // Utiliza res.download para enviar el archivo como descarga
-        //res.sendFile(archivoPath);
-
         const archivoStream = fs.createReadStream(archivoPath);
         archivoStream.pipe(res);
 
-
     }
-
 
 });
 
 // Crear rutas utiles para la API
-
 app.use("/api", rutasApi);
-
 
 // Crear Servidor
 app.listen(PORT, () => {

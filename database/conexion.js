@@ -18,7 +18,7 @@ const conexion = async() =>{
         console.log("Conectado a la Base de Datos ");
     }catch(error){
         console.log(error);
-        throw new Error("No se ha podido conectar a la base de datos");
+        throw new Error("No se ha podido conectar a la base de datos!!");
     }
 }
 

@@ -26,7 +26,7 @@ const crear = async (req, res) => {
     } catch (error) {
         return res.status(400).json({
             status: "Error",
-            mensaje: "Los datos Enviados no son correctos"
+            mensaje: "Los datos Enviados NO son correctos!!"
         });
     }
 
@@ -36,7 +36,6 @@ const crear = async (req, res) => {
     } catch(error) {
         return res.status(400).json({
             status: "Error",
-            //id
             mensaje: "Error en formato de Archivo",
         });
     }
@@ -65,7 +64,7 @@ const crear = async (req, res) => {
                 // Devolver resultado con prueba Guardada
                 return res.status(200).json({
                     status: "OK",
-                    mensaje: "Accion de Crear Usuario Correcta",
+                    mensaje: "Accion de Crear Usuario Correcta!!",
                     pruebaGuardada
                 });
             }
@@ -73,7 +72,7 @@ const crear = async (req, res) => {
         .catch(err => {
             // Devolver Error
             return res.status(400).json({
-                status: err,
+                status: "Error",
                 mensaje: "Error en Guardar Prueba. No se ha podido guardar."
             });
         });
@@ -87,7 +86,7 @@ const listar = async (req, res) => {
 
     let filtro = {};
     if (parametro_url) {
-        console.log("Existe Filtro");
+        //console.log("Existe Filtro");
         filtro.usuario = parametro_url;
     }
     let consulta = Prueba.find(filtro);
@@ -111,10 +110,9 @@ const listar = async (req, res) => {
             }
         })
         .catch(error => {
-
             return res.status(400).json({
                 status: error,
-                mensaje: "Error en la llamada al listado"
+                mensaje: "Error en la llamada al listado!!"
             });
 
 
@@ -137,7 +135,7 @@ const editar = async (req, res) => {
     } catch (error) {
         return res.status(400).json({
             status: "Error",
-            mensaje: "Los datos Enviados no son correctos"
+            mensaje: "Los datos Enviados NO son correctos"
         });
     }
 
@@ -156,7 +154,7 @@ const editar = async (req, res) => {
                 return res.status(200).json({
                     status: "OK",
                     id,
-                    mensaje: "Prueba Editada",
+                    mensaje: "Prueba Editada con Exito!!",
                     pruebas
                 });
             }
@@ -190,7 +188,7 @@ const borrar = async (req, res) => {
                 return res.status(200).json({
                     status: "OK",
                     id,
-                    mensaje: "Prueba Borrada",
+                    mensaje: "Prueba Borrada con Éxito!!",
                     pruebas
                 });
             }
@@ -217,13 +215,11 @@ const subir = async (req, res) => {
         return res.status(200).json({
             status: "OK",
             file: req.file,
-            //id
-            mensaje: "subir sonido",
+            mensaje: "Archivo de Sonido Subido con Exito!!",
         });
     } catch(error) {
         return res.status(400).json({
             status: "Error",
-            //id
             mensaje: "Error en formato de Archivo",
         });
     }

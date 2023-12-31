@@ -5,7 +5,7 @@ const validarDatos = (parametros) => {
 
     // Validar los Datos
     try {
-        let validar_prueba = !validator.isEmpty(parametros.prueba) && validator.isLength(parametros.prueba, { min: 5, max: 40 });
+        let validar_prueba = !validator.isEmpty(parametros.prueba) && validator.isLength(parametros.prueba, { min: 1, max: 40 });
         let validar_descripcion = !validator.isEmpty(parametros.descripcion) && validator.isLength(parametros.descripcion, { min: 5, max: 300 });
 
         if (!validar_prueba || !validar_descripcion) {
@@ -15,7 +15,7 @@ const validarDatos = (parametros) => {
     } catch (error) {
         return res.status(400).json({
             status: "Error",
-            mensaje: "Los datos Enviados no son correctos"
+            mensaje: "Los datos Enviados NO son correctos"
         });
     }
 }
