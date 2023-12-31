@@ -37,7 +37,7 @@ app.get('/sonidos/:archivo?', (req, res) => {
 
     //console.log(req.params);
     let nombreArchivo = req.params.archivo;
-    const archivoExiste = verificarExistenciaArchivo();
+    const archivoExiste = verificarExistenciaArchivo(nombreArchivo);
 
     if (!nombreArchivo || !archivoExiste) {
         console.log("No se envia archvio a descargar");
