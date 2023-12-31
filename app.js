@@ -83,9 +83,6 @@ function verificarExistenciaArchivo(nombreArchivo) {
     fs.access(archivoPath, fs.constants.F_OK, (err) => {
         if (err) {
             // El archivo no existe, envía una respuesta de error al cliente
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain');
-            res.end('El archivo no existe');
             return false;
         }
     });
