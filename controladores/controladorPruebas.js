@@ -11,7 +11,7 @@ const crear = async (req, res) => {
     console.log(req.body);
     const { usuario, prueba, descripcion, status } = req.body;
 
-    const sonido = req.file.filename; // Nombre del archivo de sonido
+    let sonido = req.file.filename; // Nombre del archivo de sonido
     const quesonido = sonido.replace(/\s+/g, '-');
 
     console.log(quesonido);
