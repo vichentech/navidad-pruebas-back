@@ -7,7 +7,7 @@ const router = express.Router();
 
 const almacenamiento = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, 'assets/sonidos');
+        cb(null, 'assets/sonidos/');
     },
     filename: function(req, file, cb){
         cb(null, file.originalname);
@@ -33,7 +33,7 @@ router.post("/crear", [subidas.single("quesonido")], controladorPruebas.crear);
 router.get("/listar/:usuario?", controladorPruebas.listar);
 router.put("/editar/:id?", controladorPruebas.editar);
 router.delete("/borrar/:id?", controladorPruebas.borrar);
-router.post("/subir/:id?", [subidas.single("quesonido")], controladorPruebas.subir);
+router.post("/subir/:id?", [subidas.single('quesonido')], controladorPruebas.subir);
 
 
 

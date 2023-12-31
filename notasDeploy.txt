@@ -2,5 +2,31 @@ Pasos para hacer un deploy en render.com
 
 Conecfar la aplicacion con github
 
-· Generar el 
+· Generar el .gitignore con node_modules, .env,. vscode, ...
 >git init
+>git add .
+>git commit -m "Comnentario"
+>git status // Para ver si esta actualizado
+>git remote add origin https://github.com/vichentech/navidad-pruebas-back.git   //'origin' es una referencia del servidor github ( podemos cambiarla) y elñ resto es el link a nuesrtro repositorios
+>git push -u origin master  // Para subir la rama master al 'oririn' que es donde los deja en github
+
+
+Luego en la cuenta de 'render.com', Nos conectamos con nuestra cuenta github y le damos visibilidad al proyecto que queremos subirC
+Creamos un WebService y rellenamos los campos
+A tener en cuenta
+· Poner el nombre que tendra en la llamada. ej navidad-backend  => https://navidad-backend.onrender.com
+· Asignar el servidor mas cercano
+· Crear la instanacia gratuita
+· Decirle que branch es el que subir ( generalmente 'master')
+· El root directori poner .
+· En build command '$ npm install' para que instale las dependencias
+· En Start command '$ node app.js' Que es el archivo que inicia 
+· En autodeploy Yes
+· Configurar las variables de entorno
+MONGO_DB_HOST = 'vichentech.es'
+MONGO_DB_PORT = 27017
+MONGO_DB = 'navidad'
+...
+
+Y ya estaria
+
