@@ -10,6 +10,10 @@ const almacenamiento = multer.diskStorage({
         cb(null, 'assets/sonidos/');
     },
     filename: function(req, file, cb){
+        
+        // let antiguoNombre = file.originalname;
+        // let newFileName = antiguoNombre.replace(/\s+/g, '-');
+        // cb(null, newFileName);
         cb(null, file.originalname);
     }
 });

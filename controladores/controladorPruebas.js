@@ -10,7 +10,9 @@ const crear = async (req, res) => {
     // Recoger los parametros por Post a guardar
     console.log(req.body);
     const { usuario, prueba, descripcion, status } = req.body;
-    const quesonido = req.file.filename; // Nombre del archivo de sonido
+
+    const sonido = req.file.filename; // Nombre del archivo de sonido
+    const quesonido = sonido.replace(/\s+/g, '-');
 
     console.log(quesonido);
 
