@@ -51,7 +51,7 @@ app.get('/sonidos/:archivo?', (req, res) => {
     } else {
 
         // Se supone que el archvio existe...
-        const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta correcta
+        const archivoPath = 'assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta correcta
         console.log("Enviando Archivo", archivoPath);
         const archivoStream = fs.createReadStream(archivoPath);
         res.setHeader('Content-Disposition', 'attachment; filename=' + nombreArchivo);
@@ -82,7 +82,7 @@ function verificarExistenciaArchivo(nombreArchivo) {
 
     if (!nombreArchivo) return false;
 
-    const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta al archivo que deseas verificar
+    const archivoPath = 'assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta al archivo que deseas verificar
     fs.access(archivoPath, fs.constants.F_OK, (err) => {
         if (err) {
             // El archivo no existe, envía una respuesta de error al cliente
