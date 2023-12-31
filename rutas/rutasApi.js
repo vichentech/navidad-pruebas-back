@@ -7,7 +7,7 @@ const router = express.Router();
 
 const almacenamiento = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, 'assets/sonidos/');
+        cb(null, './assets/sonidos/');
     },
     filename: function(req, file, cb){
         

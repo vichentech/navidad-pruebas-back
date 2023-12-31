@@ -37,6 +37,7 @@ app.get('/sonidos/:archivo?', (req, res) => {
 
     //console.log(req.params);
     let nombreArchivo = req.params.archivo;
+    console.log(nombreArchivo);
     const archivoExiste = verificarExistenciaArchivo(nombreArchivo);
 
     if (!nombreArchivo || !archivoExiste) {
@@ -52,10 +53,10 @@ app.get('/sonidos/:archivo?', (req, res) => {
         // Se supone que el archvio existe...
         const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta correcta
         console.log("Enviando Archivo", archivoPath);
+        const archivoStream = fs.createReadStream(archivoPath);
         res.setHeader('Content-Disposition', 'attachment; filename=' + nombreArchivo);
         //res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Type', 'audio/mpeg');
-        const archivoStream = fs.createReadStream(archivoPath);
+        res.setHeader('Content-Type', 'audio/mpeg');        
         archivoStream.pipe(res);
 
     }
@@ -78,6 +79,8 @@ function verificarExistenciaArchivo(nombreArchivo) {
     // Implementa tu lógica para verificar si el archivo existe en el servidor
     // Devuelve true si existe, de lo contrario, devuelve false
     // Puedes usar fs.existsSync u otras funciones para verificar
+
+    if (!nombreArchivo) return false;
 
     const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta al archivo que deseas verificar
     fs.access(archivoPath, fs.constants.F_OK, (err) => {
