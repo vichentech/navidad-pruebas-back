@@ -38,6 +38,7 @@ app.get('/sonidos/:archivo?', (req, res) => {
     //console.log(req.params);
     let nombreArchivo = req.params.archivo;
     const archivoExiste = verificarExistenciaArchivo();
+
     if (!nombreArchivo || !archivoExiste) {
         console.log("No se envia archvio a descargar");
         // Implementar logicz para envio de una respuesta...
@@ -77,6 +78,18 @@ function verificarExistenciaArchivo(nombreArchivo) {
     // Implementa tu lógica para verificar si el archivo existe en el servidor
     // Devuelve true si existe, de lo contrario, devuelve false
     // Puedes usar fs.existsSync u otras funciones para verificar
+
+    const archivoPath = './assets/sonidos/' + nombreArchivo; // Reemplaza con la ruta al archivo que deseas verificar
+    fs.access(archivoPath, fs.constants.F_OK, (err) => {
+        if (err) {
+            // El archivo no existe, envía una respuesta de error al cliente
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/plain');
+            res.end('El archivo no existe');
+            return false;
+        }
+    });
+
     return true; // Ejemplo: siempre devuelve true
 }
 
